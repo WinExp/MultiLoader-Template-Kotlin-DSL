@@ -1,6 +1,6 @@
-# MultiLoader Template
+# MultiLoader Template with Kotlin DSL
 
-This project provides a Gradle project template that can compile Minecraft mods for multiple modloaders using a common project for the sources. This project does not require any third party libraries or dependencies. If you have any questions or want to discuss the project, please join our [Discord](https://discord.myceliummod.network).
+This project provides a Gradle project template with Kotlin DSL that can compile Minecraft mods for multiple modloaders using a common project for the sources. This project does not require any third party libraries or dependencies.
 
 ## Getting Started
 
@@ -8,7 +8,7 @@ This project provides a Gradle project template that can compile Minecraft mods 
 This guide will show how to import the MultiLoader Template into IntelliJ IDEA. The setup process is roughly equivalent to setting up the modloaders independently and should be very familiar to anyone who has worked with their MDKs.
 
 1. Clone or download this repository to your computer.
-2. Configure the project by setting the properties in the `gradle.properties` file. You will also need to change the `rootProject.name`  property in `settings.gradle`, this should match the folder name of your project, or else IDEA may complain.
+2. Configure the project by setting the properties in the `gradle/libs.versions.toml` and `gradle.properties` file. You will also need to change the `rootProject.name`  property in `settings.gradle`, this should match the folder name of your project, or else IDEA may complain.
 3. Open the template's root folder as a new project in IDEA. This is the folder that contains this README.md file and the gradlew executable.
 4. If your default JVM/JDK is not Java 25 you will encounter an error when opening the project. This error is fixed by going to `File > Settings > Build, Execution, Deployment > Build Tools > Gradle > Gradle JVM` and changing the value to a valid Java 25 JVM. You will also need to set the Project SDK to Java 25. This can be done by going to `File > Project Structure > Project SDK`. Once both have been set open the Gradle tab in IDEA and click the refresh button to reload the project.
 5. Open your Run/Debug Configurations. Under the `Application` category there should now be options to run Fabric and NeoForge projects. Select one of the client options and try to run it.
@@ -28,5 +28,5 @@ While this template has support for many modloaders, new loaders may appear in t
 Removing loader specific projects is as easy as deleting the folder, and removing the `include("projectname")` line from the `settings.gradle` file.
 For example if you wanted to remove support for `forge` you would follow the following steps:
 
-1. Delete the subproject folder. For example, delete `MultiLoader-Template/forge`.
+1. Delete the subproject folder. For example, delete `MultiLoader-Template-Kotlin-DSL/forge`.
 2. Remove the project from `settings.gradle`. For example, remove `include("forge")`. 
