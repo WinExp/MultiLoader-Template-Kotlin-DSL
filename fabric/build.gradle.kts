@@ -29,7 +29,6 @@ loom {
 }
 
 val loaderAttribute = Attribute.of("io.github.mcgradleconventions.loader", String::class.java)
-
 listOf("apiElements", "runtimeElements", "sourcesElements", "javadocElements", "includeInternal", "modCompileClasspath").forEach { variant ->
     configurations.named(variant) {
         attributes {
@@ -37,6 +36,7 @@ listOf("apiElements", "runtimeElements", "sourcesElements", "javadocElements", "
         }
     }
 }
+
 sourceSets.configureEach {
     listOf(compileClasspathConfigurationName, runtimeClasspathConfigurationName).forEach { variant ->
         configurations.named(variant) {

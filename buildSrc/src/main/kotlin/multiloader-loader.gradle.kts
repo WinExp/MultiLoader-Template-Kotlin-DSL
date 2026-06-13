@@ -26,17 +26,17 @@ dependencies {
     commonResources(project(path = ":common", configuration = "commonResources"))
 }
 
-tasks.named<JavaCompile>("compileJava") {
+tasks.compileJava {
     dependsOn(commonJava)
     source(commonJava)
 }
 
-tasks.named<ProcessResources>("processResources") {
+tasks.processResources {
     dependsOn(commonResources)
     from(commonResources)
 }
 
-tasks.named<Javadoc>("javadoc") {
+tasks.javadoc {
     dependsOn(commonJava)
     source(commonJava)
 }

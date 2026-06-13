@@ -47,7 +47,7 @@ tasks.named<Jar>("sourcesJar") {
     from(rootProject.file("LICENSE"))
 }
 
-tasks.named<Jar>("jar") {
+tasks.jar {
     from(rootProject.file("LICENSE"))
 
     manifest {
@@ -63,7 +63,7 @@ tasks.named<Jar>("jar") {
     }
 }
 
-tasks.named<ProcessResources>("processResources") {
+tasks.processResources {
     var expandProps = mapOf(
             "version"                       to project.version.toString(),
             "group"                         to project.group.toString(),

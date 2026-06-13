@@ -46,12 +46,11 @@ neoForge {
     }
 }
 
-sourceSets.named("main") {
+sourceSets.main {
     resources.srcDir("src/generated/resources")
 }
 
 val loaderAttribute = Attribute.of("io.github.mcgradleconventions.loader", String::class.java)
-
 listOf("apiElements", "runtimeElements", "sourcesElements", "javadocElements").forEach { variant ->
     configurations.named(variant) {
         attributes {
@@ -59,6 +58,7 @@ listOf("apiElements", "runtimeElements", "sourcesElements", "javadocElements").f
         }
     }
 }
+
 sourceSets.configureEach {
     listOf(compileClasspathConfigurationName, runtimeClasspathConfigurationName, getTaskName(null, "jarJar")).forEach { variant ->
         configurations.named(variant) {
