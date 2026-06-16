@@ -2,9 +2,8 @@ val libs = extensions.getByType(VersionCatalogsExtension::class.java).named("lib
 
 plugins {
     java
+    id("multiloader-common")
 }
-
-pluginManager.apply("multiloader-common")
 
 val minecraft_version = libs.findLibrary("minecraft").get().get().version
 
