@@ -35,7 +35,6 @@ neoForge {
         }
         register("server") {
             server()
-            file("runs/server").parentFile.mkdirs()
             gameDirectory.set(file("runs/server"))
         }
     }
