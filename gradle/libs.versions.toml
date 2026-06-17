@@ -1,18 +1,20 @@
 [versions]
 # https://projects.neoforged.net/neoforged/neoforge
-neoforge = "26.1.2.75"
+neoforge = "26.1.2.76"
 # https://projects.neoforged.net/neoforged/neoform
 neoforged-neoform = "26.1.2-1"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version = "26.1.2" }
 fabric-loader = { module = "net.fabricmc:fabric-loader", version = "0.19.3" }
-fabric-api = { module = "net.fabricmc.fabric-api:fabric-api", version = "0.151.0+26.1.2" }
-mixin = { module = "org.spongepowered:mixin", version = "0.8.5" }
+fabric-api = { module = "net.fabricmc.fabric-api:fabric-api", version = "0.152.1+26.1.2" }
+# https://github.com/neoforged/NeoForge/blob/26.1.x/gradle.properties#L37
+# https://github.com/FabricMC/fabric-loader/blob/master/gradle.properties#L12
+mixin = { module = "net.fabricmc:sponge-mixin", version = "0.17.3+mixin.0.8.7" }
 mixinextra = { module = "io.github.llamalad7:mixinextras-common", version = "0.5.3" }
 
 [plugins]
 # see https://fabricmc.net/develop/ for new versions
-fabric-loom = { id = "net.fabricmc.fabric-loom", version = "1.16-SNAPSHOT" }
+fabric-loom = { id = "net.fabricmc.fabric-loom", version = "1.17-SNAPSHOT" }
 # see https://projects.neoforged.net/neoforged/moddevgradle for new versions
 neoforged-moddev = { id = "net.neoforged.moddev", version = "2.0.141" }

@@ -1,5 +1,5 @@
 plugins {
-    `multiloader-loader`
+    id("multiloader-loader")
     alias(libs.plugins.fabric.loom)
 }
 
@@ -17,19 +17,19 @@ loom {
         accessWidenerPath.set(aw)
     }
     runs {
-        listOf("client" to "Fabric Client", "server" to "Fabric Server").forEach { (runType, configNameStr) ->
+        listOf("client" to "Fabric Client", "server" to "Fabric Server").forEach { (runType, displayNameStr) ->
                 named(runType) {
                     if (runType == "client") client() else server()
-                    configName = configNameStr
-                    ideConfigGenerated(true)
-                    runDir("runs/$runType")
+                    displayName = displayNameStr
+                    generateRunConfig = true
+                    runDirectory.set(file("runs/$runType"))
                 }
         }
     }
 }
 
 val loaderAttribute = Attribute.of("io.github.mcgradleconventions.loader", String::class.java)
-listOf("apiElements", "runtimeElements", "sourcesElements", "javadocElements", "includeInternal", "modCompileClasspath").forEach { variant ->
+listOf("apiElements", "runtimeElements", "sourcesElements", "javadocElements", "modCompileClasspath").forEach { variant ->
     configurations.named(variant) {
         attributes {
             attribute(loaderAttribute, "fabric")
