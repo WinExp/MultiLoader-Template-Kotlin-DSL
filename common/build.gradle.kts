@@ -1,5 +1,5 @@
 plugins {
-    `multiloader-common`
+    id("multiloader-common")
     alias(libs.plugins.neoforged.moddev)
 }
 
@@ -14,7 +14,6 @@ neoForge {
 
 dependencies {
     compileOnly(libs.mixin)
-    // fabric and neoforge both bundle mixinextras, so it is safe to use it in common
     compileOnly(libs.mixinextra)
     annotationProcessor(libs.mixinextra)
 }

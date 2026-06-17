@@ -25,31 +25,11 @@ java {
     withJavadocJar()
 }
 
-repositories {
-    mavenCentral()
-    // https://docs.gradle.org/current/userguide/declaring_repositories.html#declaring_content_exclusively_found_in_one_repository
-    exclusiveContent {
-        forRepository {
-            maven {
-                name = "Sponge"
-                url = uri("https://repo.spongepowered.org/repository/maven-public")
-            }
-        }
-        filter { includeGroupAndSubgroups("org.spongepowered") }
-    }
-    maven {
-        name = "BlameJared"
-        url = uri("https://maven.blamejared.com")
-    }
-}
-
-tasks.named<Jar>("sourcesJar") {
+tasks.withType(Jar::class).configureEach {
     from(rootProject.file("LICENSE"))
 }
 
 tasks.jar {
-    from(rootProject.file("LICENSE"))
-
     manifest {
         attributes(mapOf(
                 "Specification-Title"    to mod_name,
