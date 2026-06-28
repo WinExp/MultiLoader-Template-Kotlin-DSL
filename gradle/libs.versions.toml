@@ -1,13 +1,13 @@
 [versions]
 # https://projects.neoforged.net/neoforged/neoforge
-neoforge = "26.2.0.1-beta"
+neoforge = "26.2.0.7-beta"
 # https://projects.neoforged.net/neoforged/neoform
 neoforged-neoform = "26.2-1"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version = "26.2" }
 fabric-loader = { module = "net.fabricmc:fabric-loader", version = "0.19.3" }
-fabric-api = { module = "net.fabricmc.fabric-api:fabric-api", version = "0.152.1+26.2" }
+fabric-api = { module = "net.fabricmc.fabric-api:fabric-api", version = "0.153.0+26.2" }
 # https://github.com/neoforged/NeoForge/blob/26.2.x/gradle.properties#L37
 # https://github.com/FabricMC/fabric-loader/blob/master/gradle.properties#L12
 mixin = { module = "net.fabricmc:sponge-mixin", version = "0.17.3+mixin.0.8.7" }

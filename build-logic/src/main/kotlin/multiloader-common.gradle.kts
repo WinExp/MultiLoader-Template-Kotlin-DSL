@@ -5,22 +5,22 @@ plugins {
     `maven-publish`
 }
 
-val mod_id: String by project
-val mod_name: String by project
-val mod_author: String by project
-val minecraft_version = libs.findLibrary("minecraft").get().get().version
-val java_version: String by project
-val minecraft_version_range: String by project
-val license: String by project
-val neoforge_loader_version_range: String by project
-val credits: String by project
+val modId = property("mod_id") as String
+val modName = property("mod_name") as String
+val modAuthor = property("mod_author") as String
+val minecraftVersion = libs.findLibrary("minecraft").get().get().version
+val javaVersion = property("java_version") as String
+val minecraftVersionRange = property("minecraft_version_range") as String
+val license = property("license") as String
+val neoforgeLoaderVersionRange = property("neoforge_loader_version_range") as String
+val credits = property("credits") as String
 
 base {
-    archivesName = "${mod_id}-${project.name}-${minecraft_version}"
+    archivesName = "${modId}-${project.name}-${minecraftVersion}"
 }
 
 java {
-    toolchain.languageVersion = JavaLanguageVersion.of(java_version)
+    toolchain.languageVersion = JavaLanguageVersion.of(javaVersion)
     withSourcesJar()
     withJavadocJar()
 }
@@ -32,13 +32,13 @@ tasks.withType(Jar::class).configureEach {
 tasks.jar {
     manifest {
         attributes(mapOf(
-                "Specification-Title"    to mod_name,
-                "Specification-Vendor"   to mod_author,
+                "Specification-Title"    to modName,
+                "Specification-Vendor"   to modAuthor,
                 "Specification-Version"  to archiveVersion.get(),
                 "Implementation-Title"   to project.name,
                 "Implementation-Version" to archiveVersion.get(),
-                "Implementation-Vendor"  to mod_author,
-                "Built-On-Minecraft"     to minecraft_version
+                "Implementation-Vendor"  to modAuthor,
+                "Built-On-Minecraft"     to minecraftVersion
         ))
     }
 }
@@ -47,19 +47,19 @@ tasks.processResources {
     var expandProps = mapOf(
             "version"                       to project.version.toString(),
             "group"                         to project.group.toString(),
-            "minecraft_version"             to minecraft_version,
-            "minecraft_version_range"       to minecraft_version_range,
+            "minecraft_version"             to minecraftVersion,
+            "minecraft_version_range"       to minecraftVersionRange,
             "fabric_version"                to libs.findLibrary("fabric-api").get().get().version,
             "fabric_loader_version"         to libs.findLibrary("fabric-loader").get().get().version,
-            "mod_name"                      to mod_name,
-            "mod_author"                    to mod_author,
-            "mod_id"                        to mod_id,
+            "mod_name"                      to modName,
+            "mod_author"                    to modAuthor,
+            "mod_id"                        to modId,
             "license"                       to license,
             "description"                   to project.description,
             "neoforge_version"              to libs.findVersion("neoforge").get().requiredVersion,
-            "neoforge_loader_version_range" to neoforge_loader_version_range,
+            "neoforge_loader_version_range" to neoforgeLoaderVersionRange,
             "credits"                       to credits,
-            "java_version"                  to java_version
+            "java_version"                  to javaVersion
     )
 
     val jsonExpandProps = expandProps.mapValues { (_, value) ->

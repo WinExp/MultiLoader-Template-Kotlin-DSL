@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.neoforged.moddev)
 }
 
-val mod_id: String by project
+val modId = property("mod_id") as String
 
 neoForge {
     version = libs.versions.neoforge.get()
@@ -14,7 +14,7 @@ neoForge {
     }
     runs {
         configureEach {
-            systemProperty("neoforge.enabledGameTestNamespaces", mod_id)
+            systemProperty("neoforge.enabledGameTestNamespaces", modId)
             ideName = "NeoForge ${name.replaceFirstChar(Char::titlecase)} (${path})"
         }
         register("client") {
@@ -27,7 +27,7 @@ neoForge {
             // DataGen can be run by - "./gradlew :neoforge:runData" in Terminal.
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             programArguments.addAll(
-                "--mod", mod_id,
+                "--mod", modId,
                 "--all",
                 "--output", file("src/generated/resources/").absolutePath,
                 "--existing", file("src/main/resources/").absolutePath
@@ -39,7 +39,7 @@ neoForge {
         }
     }
     mods {
-        register(mod_id) {
+        register(modId) {
             sourceSet(sourceSets.main.get())
         }
     }

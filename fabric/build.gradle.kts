@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.fabric.loom)
 }
 
-val mod_id: String by project
+val modId = property("mod_id") as String
 
 dependencies {
     minecraft(libs.minecraft)
@@ -12,7 +12,7 @@ dependencies {
 }
 
 loom {
-    val aw = project(":common").file("src/main/resources/${mod_id}.accesswidener")
+    val aw = project(":common").file("src/main/resources/${modId}.accesswidener")
     if (aw.exists()) {
         accessWidenerPath.set(aw)
     }

@@ -5,12 +5,12 @@ plugins {
     id("multiloader-common")
 }
 
-val minecraft_version = libs.findLibrary("minecraft").get().get().version
+val minecraftVersion = libs.findLibrary("minecraft").get().get().version
 
-val commonJava by configurations.creating {
+val commonJava = configurations.create("commonJava") {
     isCanBeResolved = true
 }
-val commonResources by configurations.creating {
+val commonResources = configurations.create("commonResources") {
     isCanBeResolved = true
 }
 
